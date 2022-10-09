@@ -1,4 +1,4 @@
-import { Container } from "../../../styles/gameDetails"
+import { Container, Description, Details, NewsContainer } from "../../../styles/gameDetails"
 
 
 export const GameDetails: React.FC = () => {
@@ -8,7 +8,7 @@ export const GameDetails: React.FC = () => {
                 <div className="imagem">
                     <img src="#" alt="Imagem" />
                 </div>
-                <div className="details">
+                <Details className="details">
                     <h2>Game Title</h2>
                     <div className="genres">
                         <a href="#">
@@ -32,16 +32,16 @@ export const GameDetails: React.FC = () => {
                             <p className="review">Reviews</p>
                         </div>
                     </div>
-                </div>
+                </Details>
             </div>
-            <div className="description">
+            <Description className="description">
                 DESCRIPTION
-            </div>
-            <div className="news-updates">
+            </Description>
+            <NewsContainer className="news-updates">
                 <div className="news1">Noticia 1</div>
                 <div className="news2">Noticia 2</div>
                 <div className="news3">Noticia 3</div>
-            </div>
+            </NewsContainer>
         </Container>
     )
 }

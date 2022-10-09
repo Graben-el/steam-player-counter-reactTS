@@ -28,36 +28,57 @@ export const Container = styled.section`
         width: 250px;
         border: 1px solid;
     }
+`
 
-    .details {
+export const Details = styled.div`
         display: flex;
         flex-direction: column;
         width: 60%;
         text-align: center;
-        gap: 20px;
 
         .genres {
             display: flex;
             justify-content: center;
             gap: 20px;
+            margin: 10px 0 30px;
         }
 
         .reviews {
             display: flex;
             justify-content: space-around;
+
+            .rate-container {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                
+                .rate {
+                    border: 1px solid;
+                    border-radius: 50%;
+                    padding: 40px 30px;
+                }
+            }
+            .likes-container > p {
+                border: 1px solid;
+                border-radius: 30px;
+                padding: 0 10px;
+                margin-top: 10px;
+            }
         }
-    }
-
-    .description {
-        width: 100%;
-        height: 100%;
-    }
-
-    .news-updates {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
 `
+
+export const Description = styled.div`
+    width: 100%;
+    height: 100%;
+`
+
+
+export const NewsContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+`
+
+
