@@ -16,9 +16,19 @@ export const Container = styled.section`
 
     .display {
         display: flex;
-        justify-content: center;
         align-items: center;
+        flex-direction: column;
         border: 2px solid green;
         height: 100%;
+        flex-wrap: wrap;
+        overflow: scroll;
+    }
+
+    .trending {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
     }
 `
