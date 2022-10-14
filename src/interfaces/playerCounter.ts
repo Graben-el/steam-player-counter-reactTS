@@ -1,11 +1,8 @@
 export interface ITrending {
     id: number;
     name: string;
-    gain?: number;
+    gain: number;
     currentPlayers: number;
-    hoursPlayed?: number;
-    peakPlayers?: number;
-    rank?: number;
 }
 
 export interface IRecord {
@@ -21,7 +18,7 @@ export interface ITopGames {
     name: string;
     currentPlayers: number;
     peakPlayers: number;
-    hoursPLayed: number;
+    hoursPlayed: number;
 }
 
 interface IStats {
