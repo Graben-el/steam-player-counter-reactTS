@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { isEmpty } from "../../../helpers/helpers";
 import { ITopGames } from "../../../interfaces/playerCounter";
+import { List, ListItem, Loading } from "../../../styles/lists";
 
 const options = {
     method: 'GET',
@@ -27,30 +29,35 @@ export const TopGames: React.FC = () => {
     )
 
     return (
-        <List>
-            {
-                topGames.map(({ currentPlayers: online, hoursPlayed: hours, id, name, peakPlayers: peak, rank }, key) => {
-                    return (
-                        <ListItem key={key}>
-                            <header>
-                                <div className="name">
-                                    <h2>
-                                        <span>{rank}. </span>
-                                        {name}
-                                    </h2>
+        <>{!isEmpty(topGames) ?
+            <List>
+                {
+                    topGames.map(({ currentPlayers: online, hoursPlayed: hours, id, name, peakPlayers: peak, rank }, key) => {
+                        return (
+                            <ListItem key={key}>
+                                <header>
+                                    <div className="name">
+                                        <h2>
+                                            <span>{rank}. </span>
+                                            {name}
+                                        </h2>
+                                    </div>
+                                    <span> ID: {id}</span>
+                                </header>
+                                <div className="counter">
+                                    <p>Online: {online.toLocaleString('pt-BR')}</p>
+                                    <p>Peak: {peak.toLocaleString('pt-BR')}</p>
+                                    <p>Hours Played: {hours.toLocaleString('pt-BR')}</p>
                                 </div>
-                                <span> ID: {id}</span>
-                            </header>
-                            <div className="counter">
-                                <p>Online: {online.toLocaleString('pt-BR')}</p>
-                                <p>Peak: {peak.toLocaleString('pt-BR')}</p>
-                                <p>Hours Played: {hours.toLocaleString('pt-BR')}</p>
-                            </div>
-                        </ListItem>
-                    )
-                })
-            } 
-        </List >
+                            </ListItem>
+                        )
+                    })
+                }
+            </List >
+            :
+            <Loading>Carregando</Loading>
+        }
+        </>
     )
 }
 
@@ -75,35 +82,3 @@ export const TopGames: React.FC = () => {
 
 
 
-const List = styled.ul`
-    width: 100%;
-    padding: 5px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    `
-
-const ListItem = styled.li`
-    width: 100%;
-    border-bottom: 1px solid;
-
-    header{
-        display: flex;
-    }
-    
-    .name {
-        span{
-            color: red;
-        }
-    }
-
-    header > span {
-        font-size: 10px;
-    }
-
-   .counter {
-        display: flex;
-        justify-content: space-around;
-        margin-bottom: 5px;
-   }
-`

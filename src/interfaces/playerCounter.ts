@@ -9,7 +9,7 @@ export interface IRecord {
     id: number;
     name: string;
     peakPlayers: number;
-    date: number;
+    date: string;
 }
 
 export interface ITopGames {
