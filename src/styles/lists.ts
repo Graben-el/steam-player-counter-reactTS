@@ -1,22 +1,26 @@
 import styled from "styled-components"
+import './variables.css'
 
 export const List = styled.ul`
     width: 100%;
-    padding: 5px 10px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    `
+    gap: 17px;
+`
 
 export const ListItem = styled.li`
     width: 100%;
     border-bottom: 1px solid;
-
-    transition: 0.3s ease-in-out;
+    transition: 0.3s ease-out;
+    color: var(--color-5);
+    border-radius: 10px;
 
     &:hover{
-        transform: scale(1.04);
-
+        transform: scale(1.03);
+        color: var(--color-3);
+        background-color: var(--color-5);
+        border-bottom: black;
     }
 
     header{
@@ -25,7 +29,7 @@ export const ListItem = styled.li`
     
     .name {
         span{
-            color: red;
+            color: var(--color-2);
         }
     }
 

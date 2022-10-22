@@ -1,13 +1,22 @@
 import styled from "styled-components";
+import './variables.css'
 
 export const Headers = styled.header`
     display: flex;
     width: 100%;
-    background-color: coral;
+    background-color: var(--color-1);
     justify-content: space-around;
     align-items: center;
     padding: 20px 0;
     font-size: 1.8rem;
+    
+    a, a:visited {
+        color: var(--color-5);
+
+        &:hover {
+            color: var(--color-6)
+        }
+    }
 `
 
 export const SearchContainer = styled.div`

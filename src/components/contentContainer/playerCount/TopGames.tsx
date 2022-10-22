@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { isEmpty } from "../../../helpers/helpers";
 import { ITopGames } from "../../../interfaces/playerCounter";
-import { List, ListItem} from "../../../styles/lists";
-import { Loading } from '../../../styles/playerCounter';
+import { List, ListItem } from "../../../styles/lists";
+import { Loading } from '../../loading/Loading';
 
 const options = {
     method: 'GET',
@@ -19,15 +19,15 @@ export const TopGames: React.FC = () => {
 
     const [topGames, setTopGames] = useState<ITopGames[]>([])
 
-    // useEffect(() => {
-    //     axios.request(options).then(function (response) {
-    //         console.log(response.data);
-    //         setTopGames(response.data)
-    //     }).catch(function (error) {
-    //         console.error(error);
-    //     });
-    // }, []
-    // )
+    useEffect(() => {
+        axios.request(options).then(function (response) {
+            console.log(response.data);
+            setTopGames(response.data)
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }, []
+    )
 
     return (
         <>{!isEmpty(topGames) ?
@@ -56,7 +56,7 @@ export const TopGames: React.FC = () => {
                 }
             </List >
             :
-            <Loading>Carregando</Loading>
+            <Loading />
         }
         </>
     )

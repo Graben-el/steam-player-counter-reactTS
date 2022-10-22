@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import { isEmpty } from '../../../helpers/helpers'
 import { ITrending } from '../../../interfaces/playerCounter'
 import { List, ListItem } from '../../../styles/lists'
-import { Loading } from '../../../styles/playerCounter';
+import { Loading } from '../../loading/Loading';
+
 
 const options = {
     method: 'GET',
@@ -18,18 +19,18 @@ export const TrendingGames: React.FC = () => {
 
     const [trending, setTrending] = useState<ITrending[]>([])
 
-    // useEffect(() => {
-    //     axios.request(options).then(function (response) {
-    //         console.log(response.data);
-    //         setTrending(response.data);
-    //     }).catch(function (error) {
-    //         console.error(error);
-    //     });
-    // }, [])
+    useEffect(() => {
+        axios.request(options).then(function (response) {
+            console.log(response.data);
+            setTrending(response.data);
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }, [])
 
     return (
         <>
-            {/* {!isEmpty(trending) ?
+            {!isEmpty(trending) ?
                 <List>
                     {
                         trending.map(({ gain, id, name, currentPlayers: online }, key) => {
@@ -46,7 +47,7 @@ export const TrendingGames: React.FC = () => {
                                     </header>
                                     <div className="counter">
                                         <p>Online Now: {online.toLocaleString('pt-BR')}</p>
-                                        <p>Gain: {gain}</p>
+                                        <p>Gain: {(gain/10).toFixed(2)}%</p>
                                     </div>
                                 </ListItem>
                             )
@@ -56,146 +57,9 @@ export const TrendingGames: React.FC = () => {
                     
                 </List>
                 :
-                <Loading>Carregando</Loading>
-
-            } */}
-            <List>
-                <ListItem>
-                    <header>
-                        <div className="name">
-                            <h2>
-                                <span>1°. </span>
-                                Castlevania Symphony of the Night
-                            </h2>
-                        </div>
-                        <span> ID: 123459</span>
-                    </header>
-                    <div className="counter">
-                        <p>Online Now: 12354.4568</p>
-                        <p>Gain: 899%</p>
-                    </div>
-                </ListItem>
-                <ListItem>
-                    <header>
-                        <div className="name">
-                            <h2>
-                                <span>1°. </span>
-                                Castlevania Symphony of the Night
-                            </h2>
-                        </div>
-                        <span> ID: 123459</span>
-                    </header>
-                    <div className="counter">
-                        <p>Online Now: 12354.4568</p>
-                        <p>Gain: 899%</p>
-                    </div>
-                </ListItem>
-                <ListItem>
-                    <header>
-                        <div className="name">
-                            <h2>
-                                <span>1°. </span>
-                                Castlevania Symphony of the Night
-                            </h2>
-                        </div>
-                        <span> ID: 123459</span>
-                    </header>
-                    <div className="counter">
-                        <p>Online Now: 12354.4568</p>
-                        <p>Gain: 899%</p>
-                    </div>
-                </ListItem>
-                <ListItem>
-                    <header>
-                        <div className="name">
-                            <h2>
-                                <span>1°. </span>
-                                Castlevania Symphony of the Night
-                            </h2>
-                        </div>
-                        <span> ID: 123459</span>
-                    </header>
-                    <div className="counter">
-                        <p>Online Now: 12354.4568</p>
-                        <p>Gain: 899%</p>
-                    </div>
-                </ListItem>
-                <ListItem>
-                    <header>
-                        <div className="name">
-                            <h2>
-                                <span>1°. </span>
-                                Castlevania Symphony of the Night
-                            </h2>
-                        </div>
-                        <span> ID: 123459</span>
-                    </header>
-                    <div className="counter">
-                        <p>Online Now: 12354.4568</p>
-                        <p>Gain: 899%</p>
-                    </div>
-                </ListItem>
-                <ListItem>
-                    <header>
-                        <div className="name">
-                            <h2>
-                                <span>1°. </span>
-                                Castlevania Symphony of the Night
-                            </h2>
-                        </div>
-                        <span> ID: 123459</span>
-                    </header>
-                    <div className="counter">
-                        <p>Online Now: 12354.4568</p>
-                        <p>Gain: 899%</p>
-                    </div>
-                </ListItem>
-                <ListItem>
-                    <header>
-                        <div className="name">
-                            <h2>
-                                <span>1°. </span>
-                                Castlevania Symphony of the Night
-                            </h2>
-                        </div>
-                        <span> ID: 123459</span>
-                    </header>
-                    <div className="counter">
-                        <p>Online Now: 12354.4568</p>
-                        <p>Gain: 899%</p>
-                    </div>
-                </ListItem>
-                <ListItem>
-                    <header>
-                        <div className="name">
-                            <h2>
-                                <span>1°. </span>
-                                Castlevania Symphony of the Night
-                            </h2>
-                        </div>
-                        <span> ID: 123459</span>
-                    </header>
-                    <div className="counter">
-                        <p>Online Now: 12354.4568</p>
-                        <p>Gain: 899%</p>
-                    </div>
-                </ListItem>
-                <ListItem>
-                    <header>
-                        <div className="name">
-                            <h2>
-                                <span>1°. </span>
-                                Castlevania Symphony of the Night
-                            </h2>
-                        </div>
-                        <span> ID: 123459</span>
-                    </header>
-                    <div className="counter">
-                        <p>Online Now: 12354.4568</p>
-                        <p>Gain: 899%</p>
-                    </div>
-                </ListItem>
-            </List>
+                <Loading />
+                
+            }
         </>
     )
 }

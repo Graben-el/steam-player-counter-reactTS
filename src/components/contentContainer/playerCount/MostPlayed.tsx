@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { IRecord } from '../../../interfaces/playerCounter'
 import axios from 'axios'
 import { List, ListItem} from '../../../styles/lists';
-import { Loading } from '../../../styles/playerCounter';
 import { isEmpty } from '../../../helpers/helpers';
+import { Loading } from '../../loading/Loading';
 
 const options = {
     method: 'GET',
@@ -17,14 +17,14 @@ const options = {
 export const MostPlayed: React.FC = () => {
     const [record, setRecord] = useState<IRecord[]>([])
 
-    // useEffect(() => {
-    //     axios.request(options).then(function (response) {
-    //         setRecord(response.data);
-    //         console.log(response.data);
-    //     }).catch(function (error) {
-    //         console.error(error);
-    //     });
-    // }, [])
+    useEffect(() => {
+        axios.request(options).then(function (response) {
+            setRecord(response.data);
+            console.log(response.data);
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }, [])
 
     return (
         <>
@@ -53,7 +53,7 @@ export const MostPlayed: React.FC = () => {
                     }
                 </List>
                 :
-                   <Loading>"Carregando"</Loading>
+                   <Loading />
             }
         </>
     )
