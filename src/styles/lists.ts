@@ -12,6 +12,13 @@ export const ListItem = styled.li`
     width: 100%;
     border-bottom: 1px solid;
 
+    transition: 0.3s ease-in-out;
+
+    &:hover{
+        transform: scale(1.04);
+
+    }
+
     header{
         display: flex;
     }
@@ -33,10 +40,3 @@ export const ListItem = styled.li`
    }
 `
 
-export const Loading = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-`

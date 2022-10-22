@@ -26,8 +26,8 @@ export const ContentContainer: React.FC = () => {
 const Container = styled.div`
     display: flex;
     width: 100%;
-    height: 83.8vh;
+    height: 87vh;
     justify-content: space-evenly;
-    padding: 30px;
+    padding: 20px;
     gap: 30px;
 `
