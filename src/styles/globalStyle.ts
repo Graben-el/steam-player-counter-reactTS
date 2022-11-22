@@ -25,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
     a, a:visited {
         color: var(--color-2);
         text-decoration: none;
+        transition: 0.3s ease-in-out;
 
         &:hover {
             color: var(--color-5)

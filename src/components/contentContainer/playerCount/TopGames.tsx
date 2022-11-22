@@ -19,15 +19,15 @@ export const TopGames: React.FC = () => {
 
     const [topGames, setTopGames] = useState<ITopGames[]>([])
 
-    useEffect(() => {
-        axios.request(options).then(function (response) {
-            console.log(response.data);
-            setTopGames(response.data)
-        }).catch(function (error) {
-            console.error(error);
-        });
-    }, []
-    )
+    // useEffect(() => {
+    //     axios.request(options).then(function (response) {
+    //         console.log(response.data);
+    //         setTopGames(response.data)
+    //     }).catch(function (error) {
+    //         console.error(error);
+    //     });
+    // }, []
+    // )
 
     return (
         <>{!isEmpty(topGames) ?

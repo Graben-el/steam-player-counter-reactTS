@@ -1,12 +1,14 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import styled from "styled-components"
+import { fetchTrending } from "../../helpers/helpers"
 import { IGameDetail, INews } from "../../interfaces/gameDetails"
 import { IDetails } from "../../interfaces/playerCounter"
 import { GameDetails } from "./gameDetails/GameDetails"
 import { PlayerCounter } from "./playerCount/playerCounter"
 
 
-export const ContentContainer: React.FC = () => {
+
+export const ContentContainer: React.FC = (trending, setTrending) => {
     
 // PlayerCount States
     const [details, setDetails] = useState<IDetails>()
@@ -15,9 +17,14 @@ export const ContentContainer: React.FC = () => {
     const [gameDetail, setGameDetail] = useState<IGameDetail>()
     const [news, setNews] = useState<INews>()
 
+
+    // useEffect(() => {
+    //     fetchTrending(setTrending)
+    //     console.log(trending)
+    // })
     return (
         <Container>
-            <PlayerCounter />
+            <PlayerCounter/>
             <GameDetails />
         </Container>
     )

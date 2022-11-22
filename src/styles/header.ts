@@ -14,7 +14,7 @@ export const Headers = styled.header`
         color: var(--color-5);
 
         &:hover {
-            color: var(--color-6)
+            color: var(--color-2)
         }
     }
 `

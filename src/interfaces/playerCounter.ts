@@ -37,3 +37,11 @@ export interface IDetails {
     allTimePeek: number;
     stats: IStats[];
 }
+
+export interface IStyleObject {
+    background: string,
+    color: string,
+    padding?: string,
+    paddingBottom?: string,
+    borderRadius?: string
+}

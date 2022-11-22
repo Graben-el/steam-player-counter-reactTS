@@ -1,64 +1,75 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react'
-import { isEmpty } from '../../../helpers/helpers'
+import { createModuleResolutionCache } from 'typescript';
+import { getStorage, isEmpty } from '../../../helpers/helpers'
 import { ITrending } from '../../../interfaces/playerCounter'
 import { List, ListItem } from '../../../styles/lists'
 import { Loading } from '../../loading/Loading';
 
+ // const [trending, setTrending] = useState<ITrending[]>([])
+    // const [storage, setStorage] = useState([])
 
-const options = {
-    method: 'GET',
-    url: 'https://steamcharts.p.rapidapi.com/api/v1/games/trending',
-    headers: {
-        'X-RapidAPI-Key': '74aa9a5909mshdddae3bd4159510p19d980jsnc4f75bfbf204',
-        'X-RapidAPI-Host': 'steamcharts.p.rapidapi.com'
-    }
-};
+    // useEffect(() => {
+    //     console.log('Fetch trending feito. Iniciando armazenamento')
+    //     sessionStorage.setItem('trending', JSON.stringify(trending))
+        
+    //     const storageData = getStorage('trending')
 
-export const TrendingGames: React.FC = () => {
+    //     console.log('Armazenamento concluído. Recuperando dados...')
+    //     setStorage(storageData)
+    // }, [trending])
 
-    const [trending, setTrending] = useState<ITrending[]>([])
+interface IProps {
+    trending?: []
+}
 
-    useEffect(() => {
-        axios.request(options).then(function (response) {
-            console.log(response.data);
-            setTrending(response.data);
-        }).catch(function (error) {
-            console.error(error);
-        });
-    }, [])
+
+export const TrendingGames: React.FC = (trending: IProps) => {
+
+    const trendingData = trending
+    const [storage, setStorage] = useState([])
+
+    // useEffect(() => {
+    //     console.log('Fetch trending feito. Iniciando armazenamento')
+    //     sessionStorage.setItem('trending', JSON.stringify(trendingData))
+        
+    //     const storageData = getStorage('trending')
+
+    //     console.log('Armazenamento concluído. Recuperando dados...')
+    //     setStorage(storageData)
+    // }, [trendingData])
 
     return (
         <>
-            {!isEmpty(trending) ?
-                <List>
-                    {
-                        trending.map(({ gain, id, name, currentPlayers: online }, key) => {
-                            return (
-                                <ListItem key={key}>
-                                    <header>
-                                        <div className="name">
-                                            <h2>
-                                                <span>{key + 1}. </span>
-                                                {name}
-                                            </h2>
+            {!isEmpty(storage) ?
+                <>
+                    <List>
+                        {
+                            storage.map(({ gain, id, name, currentPlayers: online }: any, key) => {
+                                return (
+                                    <ListItem key={key}>
+                                        <header>
+                                            <div className="name">
+                                                <h2>
+                                                    <span>{key + 1}. </span>
+                                                    {name}
+                                                </h2>
+                                            </div>
+                                            <span> ID: {id}</span>
+                                        </header>
+                                        <div className="counter">
+                                            <p>Online Now: {online.toLocaleString('pt-BR')}</p>
+                                            <p>Gain: {(gain / 10).toFixed(2)}%</p>
                                         </div>
-                                        <span> ID: {id}</span>
-                                    </header>
-                                    <div className="counter">
-                                        <p>Online Now: {online.toLocaleString('pt-BR')}</p>
-                                        <p>Gain: {(gain/10).toFixed(2)}%</p>
-                                    </div>
-                                </ListItem>
-                            )
-                        })
-                    }
-
-                    
-                </List>
+                                    </ListItem>
+                                )
+                            })
+                        }
+                    </List>
+                </>
                 :
                 <Loading />
-                
+
             }
         </>
     )

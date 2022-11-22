@@ -11,11 +11,11 @@ export const Container = styled.section`
     .menu {
         display: flex;
         gap: 60px;
+        margin-left: 10px;
         margin-bottom: -10px;
         
         li {
-            padding: 10px;
-            padding-bottom: 20px;
+            padding: 10px 0 20px 0;
         }
     }
 
@@ -48,3 +48,15 @@ export const Container = styled.section`
     }
 `
 
+export const focus= {
+    background: '#1b2838',
+    color: '#c7d5e0',
+    padding: '10px',
+    paddingBottom: '20px',
+    borderRadius: '10px 10px 0 0'
+}
+
+export const blur = {
+    background: '#2a475e',
+    color: '#66c0f4'
+}

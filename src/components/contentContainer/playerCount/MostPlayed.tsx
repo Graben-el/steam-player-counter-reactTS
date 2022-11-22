@@ -17,14 +17,14 @@ const options = {
 export const MostPlayed: React.FC = () => {
     const [record, setRecord] = useState<IRecord[]>([])
 
-    useEffect(() => {
-        axios.request(options).then(function (response) {
-            setRecord(response.data);
-            console.log(response.data);
-        }).catch(function (error) {
-            console.error(error);
-        });
-    }, [])
+    // useEffect(() => {
+    //     axios.request(options).then(function (response) {
+    //         setRecord(response.data);
+    //         console.log(response.data);
+    //     }).catch(function (error) {
+    //         console.error(error);
+    //     });
+    // }, [])
 
     return (
         <>

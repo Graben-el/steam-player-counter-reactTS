@@ -10,14 +10,9 @@ export const Header: React.FC = () => {
         <Headers>
             <a href='/'>
                 <h1>
-                    <FontAwesomeIcon icon={faSteam} />
-                    <span>STEAM</span> Info
+                    <FontAwesomeIcon icon={faSteam} /> Info
                 </h1>
             </a>
-            <SearchContainer>
-                <input type='text' placeholder='Search game...'/>
-                <FontAwesomeIcon icon={faSearch} className='search-icon'/>
-            </SearchContainer>
             <a href='https://store.steampowered.com/' target='_blank' rel="noreferrer">
                 <p>Visite a página oficial </p>
             </a>
