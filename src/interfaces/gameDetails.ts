@@ -26,7 +26,7 @@ interface IAllReviews {
 export interface IGameDetail {
     imgUrl: string;
     title: string;
-    developer: string;
+    developer: IDeveloper;
     publisher: IPublisher;
     released: string;
     description: string;
@@ -36,6 +36,10 @@ export interface IGameDetail {
     dlcs: IDlcs[]
 }
 
+interface IDeveloper {
+    link: string;
+    name: string;
+}
 
 
 interface IAppNews {

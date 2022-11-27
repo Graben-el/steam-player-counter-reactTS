@@ -5,6 +5,13 @@ export function isEmpty(obj: any): boolean {
   return Object.keys(obj).length === 0;
 }
 
+export function isObjectEmpty(obj: any): boolean {
+  for (const items in obj) {
+    return false
+  }
+  return true
+}
+
 export const setStorage = (key: string, data: Object): void => {
   const dataJson: string = JSON.stringify(data)
   sessionStorage.setItem(key, dataJson)
